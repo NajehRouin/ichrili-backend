@@ -3,11 +3,12 @@ var router = express.Router();
 var produitModel=require('../schemas/product-schemas');
 
 router.post('/products', (req, res) => {
-    //13/07/2017
+   
     var item = {
         designation: req.body.designation,
         price: req.body.price,
-        category: req.body.category
+        categorie: req.body.categorie,
+        market: req.body.market
     };
     produitModel.collection.insertOne(item, function (err, result) {
         console.log("1 record inserted");

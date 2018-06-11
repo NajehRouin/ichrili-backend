@@ -7,7 +7,7 @@ var Q = require('q');
 
 
 
-router.post('/invitation', (req, res) => {
+router.post('/invitations', (req, res) => {
     var invitation = {
         senderId: req.body.senderId,
         recieverId: req.body.recieverId,
@@ -20,10 +20,10 @@ router.post('/invitation', (req, res) => {
         }
         console.log("Invitation sent Successfully");
         res.send(invitation);
-    })
-})
+    });
+});
 
-router.put('/invitation/accept/:senderId', (req, res) => {
+router.put('/invitations/accept/:senderId', (req, res) => {
     var senderId = req.params.senderId;
     var recieverId = req.body.recieverId;
     userModel.find({ _id: senderId }, (err, user) => {
@@ -61,12 +61,12 @@ router.put('/invitation/accept/:senderId', (req, res) => {
 
 });
 
-router.get('/invitation/:currentUserId', (req, res) => {
+router.get('/invitations/:currentUserId', (req, res) => {
     var senderId = req.params.currentUserId;
     var _recievers = [];
-    invitationModel.find({ senderId: senderId }, (err, invitations) => {
+    invitationModel.find({ senderId: senderId }, (err, invitation) => {
         if (err) { res.send(err) };
-        res.send(invitations);
+        res.send(invitation);
     });
 });
 

@@ -7,22 +7,24 @@ var mongoClient = require('mongodb').MongoClient;
 var BSON = mongoClient.BSONPure;
 
 
-var productSchema = schema({
-    designation: {
+var marketSchema = schema({
+    market_name: {
         type: String,
         required: true
     },
-    price: Number,
-    category: {
+   Adresse:{
+       type: String,
+       required: true
+   },
+    ville: {
         type: String,
         required: true
     },
-    market: {
-        type: String,
-        required: true
-    },
-
-    photo_url: String
+    photo: String,
+    position:{
+        type :String,
+        required :true 
+    }
 });
 
-module.exports = mongoose.model('products', productSchema);
+module.exports = mongoose.model('markets', marketSchema);

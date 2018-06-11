@@ -5,17 +5,18 @@ var Q = require('q');
 var _ = require('lodash');
 var mongoClient = require('mongodb').MongoClient;
 var BSON = mongoClient.BSONPure;
-var invitationSchema = schema({
-    sender_id: {
-        type: Number,
+
+
+var categorieSchema = schema({
+    categorieP: {
+        type: String,
         required: true
     },
- reciever_id:{ 
-        type :Number,
-          require:true},
-responding_date: Date,
- pending: Boolean
-
+    rayon:{
+       type: String,
+       required: true
+   },
+  
 });
 
-module.exports = mongoose.model('invitations', invitationSchema);
+module.exports = mongoose.model('categories', categorieSchema);

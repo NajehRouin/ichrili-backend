@@ -7,22 +7,25 @@ var mongoClient = require('mongodb').MongoClient;
 var BSON = mongoClient.BSONPure;
 
 
-var productSchema = schema({
-    designation: {
-        type: String,
-        required: true
-    },
-    price: Number,
-    category: {
-        type: String,
-        required: true
-    },
-    market: {
-        type: String,
-        required: true
-    },
 
-    photo_url: String
+var meslistesSchema = schema({
+    libelle: {
+        type: String,
+        required: true
+    },
+    date:{
+        type :Date,
+        required: true
+    },
+    shared:{
+        type : Boolean ,
+        required:true
+
+    },
+    status:{
+        type : Boolean,
+        required:true
+
+    }
 });
-
-module.exports = mongoose.model('products', productSchema);
+module.exports = mongoose.model('meslistes', meslistesSchema);

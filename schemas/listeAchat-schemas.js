@@ -7,22 +7,30 @@ var mongoClient = require('mongodb').MongoClient;
 var BSON = mongoClient.BSONPure;
 
 
-var productSchema = schema({
-    designation: {
+var listAchatSchema = schema({
+    produit: {
         type: String,
         required: true
     },
-    price: Number,
-    category: {
-        type: String,
-        required: true
-    },
+
     market: {
         type: String,
         required: true
     },
+    qte: {
+        type: Number,
+        require: true
+    },
+    prix: {
+        type: Number,
+        require: true
+    },
 
-    photo_url: String
+    totale: {
+        type: Number,
+        require: true
+    }
+
 });
 
-module.exports = mongoose.model('products', productSchema);
+module.exports = mongoose.model('listeAchats', listAchatSchema);

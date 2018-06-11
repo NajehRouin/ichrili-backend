@@ -29,6 +29,14 @@ var userSchema = schema({
         type: String,
         default: 'Mahdia'
     },
+    email:{
+        type: String,
+        require:true
+    },
+    numtel: {
+        type : Number ,
+        require:true
+    },
     facebookAut: {
         ClientID: String,
         ClientSecret: String,

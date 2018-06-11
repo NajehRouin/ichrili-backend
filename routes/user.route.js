@@ -8,7 +8,9 @@ router.post('/users', (req, res) => {
         password: req.body.password,
         avatar_url: req.body.avatar_url,
         gender:req.body.gender,
-        region:req.body.region
+        region:req.body.region,
+        email:req.body.email,
+        numtel:req.body.numtel
     };
     userModel.collection.insertOne(item, function (err, result) {
         console.log("User inserted Successfully");
@@ -56,7 +58,7 @@ router.post('/users/authenticate', (req, res) => {
    // var deferred = Q.defer();
     var user_name=req.body.user_name;
     var password=req.body.password;
-    console.log(user_name,'  ',password);
+    //console.log(user_name,'  ',password);
     userModel.findOne({
         user_name: user_name
     }, function (err, user) {
