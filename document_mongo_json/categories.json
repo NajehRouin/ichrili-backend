@@ -1,0 +1,1 @@
+[{"_id":{ "$oid": "5b069a8c99f14d09909a2159" },"categorieP":"Frais","rayon":"Frais"},{"_id":{ "$oid": "5b069ab299f14d09909a215a" },"categorieP":"Conserve","rayon":"Epicerie"},{"_id":{ "$oid": "5b069ade99f14d09909a215b" },"categorieP":"Eaux et Boisson","rayon":"boissons"}]

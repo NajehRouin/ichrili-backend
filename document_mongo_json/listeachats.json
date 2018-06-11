@@ -1,0 +1,1 @@
+[{"_id":{ "$oid": "5b1a8691aa38aa0cc72d4c9a" },"produit":"Banane","market":"Monoprix","qte":3,"prix":0,"totale":0},{"_id":{ "$oid": "5b1e63ac376a7f0a9cd7fc3e" },"produit":"Banane","market":null,"qte":3,"prix":0,"totale":0}]
