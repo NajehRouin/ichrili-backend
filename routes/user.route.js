@@ -86,4 +86,16 @@ router.post('/users/authenticate', (req, res) => {
 })
 
 
+
+router.get('/usersforinvitation/:id',(req,res)=>{
+        var userId=req.params.id;
+        userModel.find({_id:{$ne:userId}},(err,users)=>{
+            if(err){
+                res.send(err);
+            }
+            res.send(users);
+        });
+
+})
+
 module.exports = router;
