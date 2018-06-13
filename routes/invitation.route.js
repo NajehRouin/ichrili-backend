@@ -61,11 +61,25 @@ router.put('/invitations/accept/:senderId', (req, res) => {
 
 });
 
-router.get('/invitations/:currentUserId', (req, res) => {
-    var senderId = req.params.currentUserId;
-    var _recievers = [];
+// Get all pending send invitation out
+router.get('/invitations/pending/out/:id', (req, res) => {
+    var senderId = req.params.id;
     invitationModel.find({ senderId: senderId }, (err, invitation) => {
-        if (err) { res.send(err) };
+        if (err) { 
+            res.send(err);
+         }
+        res.send(invitation);
+    });
+});
+
+
+// Get all pending recieved invitation in (test ok)
+router.get('/invitations/pending/in/:id', (req, res) => {
+    var receiverId = req.params.id;
+    invitationModel.find({ recieverId: receiverId }, (err, invitation) => {
+        if (err) { 
+            res.send(err)
+         };
         res.send(invitation);
     });
 });
