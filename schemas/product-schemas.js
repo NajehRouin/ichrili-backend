@@ -21,7 +21,10 @@ var productSchema = schema({
         type: String,
         required: true
     },
-
+unite:{
+type: String ,
+required :true
+},
     photo_url: String
 });
 

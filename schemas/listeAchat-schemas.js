@@ -8,28 +8,31 @@ var BSON = mongoClient.BSONPure;
 
 
 var listAchatSchema = schema({
-    produit: {
-        type: String,
-        required: true
+    label:{type :String,required:true},
+    date_creation:{type:Date,required:true,default:Date.now},
+    owner:{
+        id:{type:String,required:true},
+        name:{type:String,required:true},
+        ville:{type:String,required:true}
     },
+    items:[{
+        ord:{
+            type:Number
+        },
+        produit: {
+            designation:{type:String, required:true},
+            market:{type:String,required:true},
+            categorie:{type:String,required:true},
+            price:{type:Number},
+            unite:{type:String,required:true}
+        },
+        qte: {
+            type: Number,
+            require: true
+        }
 
-    market: {
-        type: String,
-        required: true
-    },
-    qte: {
-        type: Number,
-        require: true
-    },
-    prix: {
-        type: Number,
-        require: true
-    },
+    }]
 
-    totale: {
-        type: Number,
-        require: true
-    }
 
 });
 

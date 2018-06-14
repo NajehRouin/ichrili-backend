@@ -9,8 +9,14 @@ var Q = require('q');
 
 router.post('/invitations', (req, res) => {
     var invitation = {
-        senderId: req.body.senderId,
-        recieverId: req.body.recieverId,
+        senderId: req.body.sender._id,
+        senderName : req.body.sender.user_name,
+        senderGender : req.body.sender.gender,
+        senderAdress : req.body.sender.region,
+        recieverId: req.body.reciever._id,
+        recieverName : req.body.reciever.user_name,
+        recieverGender : req.body.reciever.gender,
+        recieverAdress : req.body.reciever.region,
     };
 
 
@@ -65,9 +71,9 @@ router.put('/invitations/accept/:senderId', (req, res) => {
 router.get('/invitations/pending/out/:id', (req, res) => {
     var senderId = req.params.id;
     invitationModel.find({ senderId: senderId }, (err, invitation) => {
-        if (err) { 
+        if (err) {
             res.send(err);
-         }
+        }
         res.send(invitation);
     });
 });
@@ -76,12 +82,13 @@ router.get('/invitations/pending/out/:id', (req, res) => {
 // Get all pending recieved invitation in (test ok)
 router.get('/invitations/pending/in/:id', (req, res) => {
     var receiverId = req.params.id;
+    var invitSenderIds = [];
     invitationModel.find({ recieverId: receiverId }, (err, invitation) => {
-        if (err) { 
-            res.send(err)
-         };
+        if (err) {
+            res.send(err);
+        }
         res.send(invitation);
-    });
+    })
 });
 
 
