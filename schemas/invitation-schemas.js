@@ -5,16 +5,19 @@ var Q = require('q');
 var _ = require('lodash');
 var mongoClient = require('mongodb').MongoClient;
 var BSON = mongoClient.BSONPure;
+
+
 var invitationSchema = schema({
     sender_id: {
-        type: Number,
+        type: String,
         required: true
     },
- reciever_id:{ 
-        type :Number,
-          require:true},
-responding_date: Date,
- pending: Boolean
+    reciever_id: {
+        type: String,
+        require: true
+    },
+    responding_date: Date,
+    pending: Boolean
 
 });
 

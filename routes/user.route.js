@@ -83,7 +83,31 @@ router.post('/users/authenticate', (req, res) => {
     });
 
   //  return deferred.promise;
-})
+});
 
+
+
+router.get('/users/foreigners/:id',(req,res)=>{
+        var userId=req.params.id;
+        userModel.find({_id:{$ne:userId}},(err,users)=>{
+            if(err){
+                res.send(err);
+            }
+            res.send(users);
+        });
+
+
+});
+router.get ('/users/recived/:id',(req,res)=>{
+    var userId=req.params.id;
+    userModel.find({_id:userId},(err,users)=>{
+        if(err){
+            res.send(err);
+        }
+        res.send(users);
+    });
+
+
+});
 
 module.exports = router;

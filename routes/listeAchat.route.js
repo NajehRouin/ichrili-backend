@@ -4,15 +4,18 @@ var listeAchatModel=require('../schemas/listeAchat-schemas');
 
 router.post('/listeAchats', (req, res) => {
    
-    var item = {
-        produit: req.body.produit,
-        market: req.body.market,
-        qte: req.body.qte,
-        prix: req.body.prix,
-        totale: req.body.totale
-    };
-    listeAchatModel.collection.insertOne(item, function (err, result) {
-        console.log("1 record inserted");
+    var list={
+        label:req.body.label,
+        date_creation:req.body.date_creation,
+        owner:req.body.owner,
+        items:req.body.items
+    }
+
+    listeAchatModel.insertMany(list,(err,done)=>{
+        if(err){
+            res.send({err:err});
+        }
+        res.send("1 List successufully inserted ");
     })
 })
 

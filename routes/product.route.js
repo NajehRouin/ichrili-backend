@@ -8,7 +8,8 @@ router.post('/products', (req, res) => {
         designation: req.body.designation,
         price: req.body.price,
         categorie: req.body.categorie,
-        market: req.body.market
+        market: req.body.market,
+        unite:req.body.unite
     };
     produitModel.collection.insertOne(item, function (err, result) {
         console.log("1 record inserted");
