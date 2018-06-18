@@ -12,6 +12,7 @@ var ObjectID = require('mongodb').ObjectID;
 
 mongoose.connect('mongodb://localhost/product_db');
 
+
 //API Product
 
 var produitModel = require('./schemas/product-schemas');
@@ -74,6 +75,8 @@ app.use('/',productspecialRouter);
 app.use('/',meslisteRouter);
 app.use('/',listeAchatRouter);
 //upload photo produit
+
+
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
         cb(null, './upload');
@@ -107,6 +110,7 @@ app.post('/upload', upload, function (req, res, next) {
                 err_desc: err
             });
             return;
+
         }
         res.json({
             error_code: 0,
@@ -130,63 +134,11 @@ function updatePhoto(_id, path) {
     return deferred.promise;
 }
 
-//upload photo market
-
-var stocke = multer.diskStorage({ //multers disk storage settings
-    market_name: function (req, file, cb) {
-        cb(null, './upload');
-    },
-    filename: function (req, file, cb) {
-        var marketId = req.body.marketId;
-        console.log(marketId);
-        var path = file.fieldname + '_' + marketId + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1];
-        cb(null, path);
-        updatePhotomarket(marketId, path)
-            .then(function () {
-                res.sendStatus(200);
-            })
-            .catch(function (err) {
-                res.status(400).send(err);
-            });
 
 
-    }
-});
-
-var uploads = multer({
-    storage: stocke
-}).single('phot');
-
-app.post('/upload', uploads, function (req, res, next) {
-    upload(req, res, function (err) {
-        if (err) {
-            res.json({
-                error_code: 1,
-                err_desc: err
-            });
-            return;
-        }
-        res.json({
-            error_code: 0,
-            err_desc: 'market Photo successfully uploded'
-        });
-    });
-});
 
 
-function updatePhotomarket(_id, path) {
-    var deferred = Q.defer();
-   marketModel.findByIdAndUpdate(_id, {
-            $set: {
-                photo: path
-            }
-        },
-        function (err, doc) {
-            if (err) deferred.reject(err.name + ': ' + err.message);
-            deferred.resolve();
-        });
-    return deferred.promise;
-}
+
 
 // Server Listening on http://localhost:3000
 app.listen(3000, () => {

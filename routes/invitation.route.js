@@ -28,7 +28,7 @@ router.post('/invitations', (req, res) => {
         res.send(invitation);
     });
 });
-
+/*
 router.put('/invitations/accept/:senderId', (req, res) => {
     var senderId = req.params.senderId;
     var recieverId = req.body.recieverId;
@@ -65,7 +65,7 @@ router.put('/invitations/accept/:senderId', (req, res) => {
     })
 
 
-});
+});*/
 
 // Get all pending send invitation out
 router.get('/invitations/pending/out/:id', (req, res) => {
@@ -88,8 +88,18 @@ router.get('/invitations/pending/in/:id', (req, res) => {
             res.send(err);
         }
         res.send(invitation);
-    })
+    });
 });
 
+router.get('/invitation/acepte/friend/:id', (req,res )=> {
+    var senderId = req.params.id;
+    invitationModel.find({ senderId: senderId }, (err, invitation) => {
+        if (err) {
+            res.send(err);
+        }
+        res.send(invitation);
+    });
+
+});
 
 module.exports = router;

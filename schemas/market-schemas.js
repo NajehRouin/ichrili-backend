@@ -20,11 +20,11 @@ var marketSchema = schema({
         type: String,
         required: true
     },
-    photo: String,
-    position:{
-        type :String,
-        required :true 
-    }
+
+ code :{
+     type : Number,
+     required: true 
+ }
 });
 
 module.exports = mongoose.model('markets', marketSchema);
