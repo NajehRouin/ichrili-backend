@@ -95,9 +95,8 @@ router.get('/users/foreigners/:id',(req,res)=>{
             }
             res.send(users);
         });
-
-
 });
+
 router.get ('/users/recived/:id',(req,res)=>{
     var userId=req.params.id;
     userModel.find({_id:userId},(err,users)=>{
@@ -109,5 +108,17 @@ router.get ('/users/recived/:id',(req,res)=>{
 
 
 });
+
+router.get('/users/friends/:id',function(req,res){
+    var userId=req.params.id;
+    userModel.find({_id:userId},function(err,result){
+        if(err){
+            res.send(err);
+        }
+        
+        res.send(result[0].friends);
+        console.log('friends',result[0].freinds);
+    })
+})
 
 module.exports = router;

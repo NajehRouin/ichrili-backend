@@ -8,6 +8,7 @@ var BSON = mongoClient.BSONPure;
 
 
 var listAchatSchema = schema({
+    
     label:{type :String,required:true},
     date_creation:{type:Date,required:true,default:Date.now},
     owner:{

@@ -37,30 +37,17 @@ var userSchema = schema({
         type : Number ,
         require:true
     },
-    facebookAut: {
-        ClientID: String,
-        ClientSecret: String,
-        ClientCallback: String
-    },
-    twitterAuth: {
-        consumerKey: String,
-        consumerSecret: String,
-        callbackURL: String
-    },
-    googleAuth: {
-        ClientID: String,
-        ClientSecret: String,
-        ClientCallback: String
-    },
     friends: [{
         friendId: {
             type: String,
             ref: 'users',
-            friendShipAt: {
+        friendShipAt: {
                 type: Date,
                 defaut: Date.now()
             }
-        }
+        },
+        user_name:{type:String},
+        region:{type:String}
     }]
 });
 
