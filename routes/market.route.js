@@ -8,11 +8,11 @@ router.post('/markets', (req, res) => {
         market_name: req.body.market_name,
         Adresse: req.body.Adresse,
         ville: req.body.ville,
-        position: req.body.position
+        code: req.body.code
        
     };
     marketModel.collection.insertOne(item, function (err, result) {
-        console.log("1 record inserted");
+        console.log("market  inserted");
     })
 })
 
