@@ -30,7 +30,7 @@ router.get('/listeAchats/owner/:id', function(req, res) {
     var ownerId=req.params.id;
     listeAchatModel.find({'owner.id':ownerId},function (err, liste) {
         if (err) res.send(err);
-        console.log("oner list",liste);
+        //console.log("oner list",liste);
         res.send(liste);
         
     })

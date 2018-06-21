@@ -37,18 +37,7 @@ var userSchema = schema({
         type : Number ,
         require:true
     },
-    friends: [{
-        friendId: {
-            type: String,
-            ref: 'users',
-        friendShipAt: {
-                type: Date,
-                defaut: Date.now()
-            }
-        },
-        user_name:{type:String},
-        region:{type:String}
-    }]
+    friends: []
 });
 
 module.exports = mongoose.model('users', userSchema);

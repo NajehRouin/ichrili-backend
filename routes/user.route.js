@@ -117,7 +117,7 @@ router.get('/users/friends/:id',function(req,res){
         }
         
         res.send(result[0].friends);
-        console.log('friends',result[0].freinds);
+        //console.log('friends',result[0].freinds);
     })
 })
 

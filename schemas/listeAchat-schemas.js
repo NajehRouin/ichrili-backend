@@ -25,7 +25,8 @@ var listAchatSchema = schema({
             market:{type:String,required:true},
             categorie:{type:String,required:true},
             price:{type:Number},
-            unite:{type:String,required:true}
+            unite:{type:String,required:true},
+          
         },
         qte: {
             type: Number,
