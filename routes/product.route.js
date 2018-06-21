@@ -25,7 +25,7 @@ router.get('/products', (req, res) => {
 })
 
 router.delete('/products/:productId', function (req, res) {
-    //console.log('product deleted : ' + req.params.productId);
+   
     produitModel.findByIdAndRemove(req.params.productId, (err, docs) => {
         if (err) return console.log(err);
         res.send('Product removed Successufully :' + req.params)
