@@ -12,7 +12,7 @@ router.post('/products', (req, res) => {
         unite:req.body.unite
     };
     produitModel.collection.insertOne(item, function (err, result) {
-        console.log("1 record inserted");
+        console.log("produit  record inserted");
     })
 })
 
@@ -29,8 +29,8 @@ router.delete('/products/:productId', function (req, res) {
     produitModel.findByIdAndRemove(req.params.productId, (err, docs) => {
         if (err) return console.log(err);
         res.send('Product removed Successufully :' + req.params)
-    })
-})
+    });
+});
 
 router.put('/products/:productId', (req, res) => {
     var produitId = req.params.productId;

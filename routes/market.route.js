@@ -41,6 +41,6 @@ router.put('/markets/:marketId', (req, res) => {
     }, req.body, function (err, market) {
         res.send('market successfully updated');
     });
-})
+});
 
 module.exports = router;

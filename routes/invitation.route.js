@@ -27,7 +27,7 @@ var updateFriendsArray = function (req, res, next) {
         userModel.findOne({ _id: senderId }, (err, user) => {
             var tmpfriends = user.friends;
             var friend = { friendId: '', friendShipAt: null, friend_name: '', region: '', gender: 'homme' };
-            friend.friendId = senderId;
+            friend.friendId = recieverId;
             friend.friendShipAt = friendShipAt;
             friend.friend_name = curretUser_name;
             friend.region = curretUser_adress;
@@ -35,7 +35,7 @@ var updateFriendsArray = function (req, res, next) {
 
             tmpfriends.push(friend);
 
-            userModel.findOneAndUpdate({ _id: senderId }, { friends: tmpfriends }, (err, user) => {
+            userModel.findOneAndUpdate({ _id: senderId }, { friends: tmpfriends }, function(err, user) {
                 if (err) {
                     res.send(err);
                     defer.reject(err);
@@ -48,7 +48,7 @@ var updateFriendsArray = function (req, res, next) {
         userModel.findOne({ _id: recieverId }, (err, user) => {
             var tmpfriends = user.friends;
             var friend = { friendId: '', friendShipAt: null, friend_name: '', region: '', gender: 'homme' };
-            friend.friendId = recieverId;
+            friend.friendId = senderId;
             friend.friendShipAt = friendShipAt;
             friend.friend_name = friend_name;
             friend.region = friend_adress;
@@ -106,16 +106,16 @@ router.post('/invitations', (req, res) => {
     });
 });
 
-router.put('/invitations/accept', updateFriendsArray, (req, res) => {
+router.put('/invitations/accept', updateFriendsArray,function (req, res) {
 
    
     //console.log("request:body   ", req.body);
 });
 
 // Get all pending send invitation out
-router.get('/invitations/pending/out/:id', (req, res) => {
+router.get('/invitations/pending/out/:id', function(req, res) {
     var senderId = req.params.id;
-    invitationModel.find({ senderId: senderId }, (err, invitation) => {
+    invitationModel.find({ senderId: senderId },function  (err, invitation) {
         if (err) {
             res.send(err);
         }
